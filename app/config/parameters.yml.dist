@@ -1,0 +1,9 @@
+parameters:
+    secret: ThouShallChangeMe
+
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: 3306
+    database_name: ~
+    database_user: ~
+    database_password: ~

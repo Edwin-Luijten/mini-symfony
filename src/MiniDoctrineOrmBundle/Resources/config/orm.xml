@@ -7,7 +7,7 @@
     <parameters>
         <parameter key="doctrine.orm.configuration.class">Doctrine\ORM\Configuration</parameter>
         <parameter key="doctrine.orm.entity_manager.class">Doctrine\ORM\EntityManager</parameter>
-        <parameter key="doctrine.orm.manager_configurator.class">DoctrineBundle\ManagerConfigurator</parameter>
+        <parameter key="doctrine.orm.manager_configurator.class">MiniDoctrineORMBundle\ManagerConfigurator</parameter>
 
         <!-- cache -->
         <parameter key="doctrine.orm.cache.array.class">Doctrine\Common\Cache\ArrayCache</parameter>
@@ -38,13 +38,6 @@
 
         <!-- cache warmer -->
         <parameter key="doctrine.orm.proxy_cache_warmer.class">Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer</parameter>
-
-        <!-- form field factory guesser -->
-        <parameter key="form.type_guesser.doctrine.class">Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser</parameter>
-
-        <!-- validator -->
-        <parameter key="doctrine.orm.validator.unique.class">Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator</parameter>
-        <parameter key="doctrine.orm.validator_initializer.class">Symfony\Bridge\Doctrine\Validator\DoctrineInitializer</parameter>
 
         <!-- security -->
         <parameter key="doctrine.orm.security.user.provider.class">Symfony\Bridge\Doctrine\Security\User\EntityUserProvider</parameter>
@@ -80,16 +73,6 @@
 
         <service id="doctrine.orm.proxy_cache_warmer" class="%doctrine.orm.proxy_cache_warmer.class%" public="false">
             <tag name="kernel.cache_warmer" />
-            <argument type="service" id="doctrine" />
-        </service>
-
-        <service id="form.type_guesser.doctrine" class="%form.type_guesser.doctrine.class%">
-            <tag name="form.type_guesser" />
-            <argument type="service" id="doctrine" />
-        </service>
-
-        <service id="form.type.entity" class="Symfony\Bridge\Doctrine\Form\Type\EntityType">
-            <tag name="form.type" alias="entity" />
             <argument type="service" id="doctrine" />
         </service>
 

@@ -7,3 +7,5 @@ parameters:
     database_name: ~
     database_user: ~
     database_password: ~
+
+    debug.container.dump: %kernel.cache_dir%/%kernel.container_class%.xml

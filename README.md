@@ -5,7 +5,7 @@ Mini Symfony is a skeleton based on [Symfony Emtpy Edition](https://github.com/g
 ### Todo  
 - [x] debug:container command
 - [x] Mini Dbal
-- [ ] Mini ORM
+- [x] Mini ORM
 - [ ] Move Mini Dbal to separate package
 - [ ] Move ORM to separate package
 - [ ] Add benchmarks

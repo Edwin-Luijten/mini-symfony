@@ -3,19 +3,28 @@
 namespace DoctrineBundle\DependencyInjection;
 
 use Doctrine\ORM\Version;
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Config\Loader\LoaderResolver;
+use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 use Symfony\Component\DependencyInjection\Alias;
+use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
-use Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Symfony\Bridge\Doctrine\DependencyInjection\AbstractDoctrineExtension;
+use Symfony\Component\Config\FileLocator;
+use Doctrine\Bundle\DoctrineCacheBundle\DependencyInjection\SymfonyBridgeAdapter;
+use Doctrine\Bundle\DoctrineCacheBundle\DependencyInjection\CacheProviderLoader;
 
-class DoctrineExtension extends Extension
+/**
+ * DoctrineExtension is an extension for the Doctrine DBAL and ORM library.
+ *
+ * @author Jonathan H. Wage <jonwage@gmail.com>
+ * @author Fabien Potencier <fabien@symfony.com>
+ * @author Benjamin Eberlei <kontakt@beberlei.de>
+ * @author Fabio B. Silva <fabio.bat.silva@gmail.com>
+ * @author Kinn Coelho Julião <kinncj@php.net>
+ */
+class DoctrineExtension extends AbstractDoctrineExtension
 {
     /**
      * @var string
@@ -32,36 +41,63 @@ class DoctrineExtension extends Extension
      */
     private $adapter;
 
-    public function getAlias()
+    /**
+     * @param SymfonyBridgeAdapter $adapter
+     */
+    public function __construct(SymfonyBridgeAdapter $adapter = null)
     {
-        return 'doctrine';
+        $this->adapter = $adapter ?: new SymfonyBridgeAdapter(new CacheProviderLoader(), 'doctrine.orm', 'orm');
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = $this->getConfiguration($configs, $container);
-
         $config = $this->processConfiguration($configuration, $configs);
 
-        $fileLocator = new FileLocator(__DIR__ . '/../Resources/config');
-        $loader = new DirectoryLoader($container, $fileLocator);
-        $loader->setResolver(new LoaderResolver(array(
-            new XmlFileLoader($container, $fileLocator),
-            $loader,
-        )));
-        $loader->load('services/');
+        $this->adapter->loadServicesConfiguration($container);
 
-        $this->configureDbal($config['dbal'], $container);
-        $this->configureOrm($config['orm'], $container);
+        if (!empty($config['dbal'])) {
+            $this->dbalLoad($config['dbal'], $container);
+        }
 
+        if (!empty($config['orm'])) {
+            if (empty($config['dbal'])) {
+                throw new \LogicException('Configuring the ORM layer requires to configure the DBAL layer as well.');
+            }
 
-        $this->configureClassesToCompile();
+            $this->ormLoad($config['orm'], $container);
+        }
+
+        $this->addClassesToCompile(array(
+            'Doctrine\\Common\\Annotations\\DocLexer',
+            'Doctrine\\Common\\Annotations\\FileCacheReader',
+            'Doctrine\\Common\\Annotations\\PhpParser',
+            'Doctrine\\Common\\Annotations\\Reader',
+            'Doctrine\\Common\\Lexer',
+            'Doctrine\\Common\\Persistence\\ConnectionRegistry',
+            'Doctrine\\Common\\Persistence\\Proxy',
+            'Doctrine\\Common\\Util\\ClassUtils',
+            'Doctrine\\Bundle\\DoctrineBundle\\Registry',
+        ));
     }
 
-    private function configureDbal($config, ContainerBuilder $container) {
+    /**
+     * Loads the DBAL configuration.
+     *
+     * Usage example:
+     *
+     *      <doctrine:dbal id="myconn" dbname="sfweb" user="root" />
+     *
+     * @param array            $config    An array of configuration settings
+     * @param ContainerBuilder $container A ContainerBuilder instance
+     */
+    protected function dbalLoad(array $config, ContainerBuilder $container)
+    {
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('dbal.xml');
 
         if (empty($config['default_connection'])) {
             $keys = array_keys($config['connections']);
@@ -270,28 +306,6 @@ class DoctrineExtension extends Extension
         }
 
         return $options;
-    }
-
-    private function configureOrm($config, ContainerBuilder $container) {
-        if (!empty($config['orm'])) {
-            if (empty($config['dbal'])) {
-                throw new \LogicException('Configuring the ORM layer requires to configure the DBAL layer as well.');
-            }
-
-            $this->ormLoad($config['orm'], $container);
-        }
-
-        $this->addClassesToCompile(array(
-            'Doctrine\\Common\\Annotations\\DocLexer',
-            'Doctrine\\Common\\Annotations\\FileCacheReader',
-            'Doctrine\\Common\\Annotations\\PhpParser',
-            'Doctrine\\Common\\Annotations\\Reader',
-            'Doctrine\\Common\\Lexer',
-            'Doctrine\\Common\\Persistence\\ConnectionRegistry',
-            'Doctrine\\Common\\Persistence\\Proxy',
-            'Doctrine\\Common\\Util\\ClassUtils',
-            'Doctrine\\Bundle\\DoctrineBundle\\Registry',
-        ));
     }
 
     /**
@@ -773,11 +787,19 @@ class DoctrineExtension extends Extension
     }
 
     /**
-     * Run `bin/what-classes-to-compile.sh` to have an idea of what to add here.
+     * {@inheritDoc}
      */
-    private function configureClassesToCompile()
+    public function getXsdValidationBasePath()
     {
+        return __DIR__.'/../Resources/config/schema';
+    }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function getNamespace()
+    {
+        return 'http://symfony.com/schema/dic/doctrine';
     }
 
     /**

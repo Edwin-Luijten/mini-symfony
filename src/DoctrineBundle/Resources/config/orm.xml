@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
         <parameter key="doctrine.orm.configuration.class">Doctrine\ORM\Configuration</parameter>
@@ -37,7 +37,17 @@
         <parameter key="doctrine.orm.metadata.staticphp.class">Doctrine\ORM\Mapping\Driver\StaticPHPDriver</parameter>
 
         <!-- cache warmer -->
-        <parameter key="doctrine.orm.proxy_cache_warmer.class">DoctrineBundle\CacheWarmer\ProxyCacheWarmer</parameter>
+        <parameter key="doctrine.orm.proxy_cache_warmer.class">Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer</parameter>
+
+        <!-- form field factory guesser -->
+        <parameter key="form.type_guesser.doctrine.class">Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser</parameter>
+
+        <!-- validator -->
+        <parameter key="doctrine.orm.validator.unique.class">Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntityValidator</parameter>
+        <parameter key="doctrine.orm.validator_initializer.class">Symfony\Bridge\Doctrine\Validator\DoctrineInitializer</parameter>
+
+        <!-- security -->
+        <parameter key="doctrine.orm.security.user.provider.class">Symfony\Bridge\Doctrine\Security\User\EntityUserProvider</parameter>
 
         <!-- listeners -->
         <parameter key="doctrine.orm.listeners.resolve_target_entity.class">Doctrine\ORM\Tools\ResolveTargetEntityListener</parameter>
@@ -70,6 +80,16 @@
 
         <service id="doctrine.orm.proxy_cache_warmer" class="%doctrine.orm.proxy_cache_warmer.class%" public="false">
             <tag name="kernel.cache_warmer" />
+            <argument type="service" id="doctrine" />
+        </service>
+
+        <service id="form.type_guesser.doctrine" class="%form.type_guesser.doctrine.class%">
+            <tag name="form.type_guesser" />
+            <argument type="service" id="doctrine" />
+        </service>
+
+        <service id="form.type.entity" class="Symfony\Bridge\Doctrine\Form\Type\EntityType">
+            <tag name="form.type" alias="entity" />
             <argument type="service" id="doctrine" />
         </service>
 

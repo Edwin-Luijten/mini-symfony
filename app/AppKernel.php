@@ -9,9 +9,6 @@ class AppKernel extends Kernel
     {
         return array(
             new Gnugat\MicroFrameworkBundle\GnugatMicroFrameworkBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Doctrine\Bundle\DoctrineCacheBundle\DoctrineCacheBundle(),
-            new MiniDoctrineBundle\MiniDoctrineBundle(),
             new AppBundle\AppBundle(),
         );
     }

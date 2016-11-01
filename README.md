@@ -2,9 +2,19 @@
 
 Mini Symfony is a skeleton based on [Symfony Emtpy Edition](https://github.com/gnugat/symfony-empty-edition) and the [Micro Framework Bundle](https://github.com/gnugat/micro-framework-bundle).
 
+## Installation  
+`composer create-project mini-symfony/skeleton my-project`
+
+## Additions  
+Check that the bundle you want to use does not require symfony/framework-bundle.
+
+### Doctrine  
+https://github.com/Edwin-Luijten/mini-doctrine-bundle
+`composer require mini-symfony/mini-doctrine-bundle`
+
 ### Todo  
 - [x] debug:container command
 - [x] Mini Dbal
 - [x] Mini ORM
-- [ ] Move Mini Doctrine to separate package MiniDoctrineBundle
+- [x] Move Mini Doctrine to separate package MiniDoctrineBundle
 - [ ] Add benchmarks

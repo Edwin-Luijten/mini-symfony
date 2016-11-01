@@ -1,5 +1,1 @@
 services:
-  index_controller:
-    class: AppBundle\Controllers\IndexController
-    arguments:
-      - "@doctrine.dbal.default_connection"

@@ -1,8 +1,8 @@
 {
-    "name": "gnugat/symfony-empty-edition",
+    "name": "mini-symfony/skeleton",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Empty Edition\" distribution",
+    "description": "The mini Symfony skeleton",
     "autoload": {
         "psr-4": { "": "src" },
         "files": [ "app/AppKernel.php" ]

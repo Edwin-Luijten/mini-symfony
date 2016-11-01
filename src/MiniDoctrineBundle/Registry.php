@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineBundle;
+namespace MiniDoctrineBundle;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Bridge\Doctrine\RegistryInterface;

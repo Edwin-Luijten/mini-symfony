@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineBundle;
+namespace MiniDoctrineBundle;
 
 use Doctrine\Common\EventManager;
 use Doctrine\DBAL\Configuration;

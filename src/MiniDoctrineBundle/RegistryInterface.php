@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineBundle;
+namespace MiniDoctrineBundle;
 
 use Doctrine\Common\Persistence\ManagerRegistry as ManagerRegistryInterface;
 use Doctrine\ORM\EntityManager;

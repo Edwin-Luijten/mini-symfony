@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineBundle;
+namespace MiniDoctrineBundle;
 
 use Doctrine\Common\EventArgs;
 use Doctrine\Common\EventManager;

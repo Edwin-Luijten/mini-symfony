@@ -7,7 +7,7 @@
     <parameters>
         <parameter key="doctrine.orm.configuration.class">Doctrine\ORM\Configuration</parameter>
         <parameter key="doctrine.orm.entity_manager.class">Doctrine\ORM\EntityManager</parameter>
-        <parameter key="doctrine.orm.manager_configurator.class">MiniDoctrineORMBundle\ManagerConfigurator</parameter>
+        <parameter key="doctrine.orm.manager_configurator.class">MiniDoctrineBundle\ManagerConfigurator</parameter>
 
         <!-- cache -->
         <parameter key="doctrine.orm.cache.array.class">Doctrine\Common\Cache\ArrayCache</parameter>
@@ -38,9 +38,6 @@
 
         <!-- cache warmer -->
         <parameter key="doctrine.orm.proxy_cache_warmer.class">Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer</parameter>
-
-        <!-- security -->
-        <parameter key="doctrine.orm.security.user.provider.class">Symfony\Bridge\Doctrine\Security\User\EntityUserProvider</parameter>
 
         <!-- listeners -->
         <parameter key="doctrine.orm.listeners.resolve_target_entity.class">Doctrine\ORM\Tools\ResolveTargetEntityListener</parameter>

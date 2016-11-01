@@ -1,6 +1,6 @@
 <?php
 
-namespace MiniDoctrineOrmBundle;
+namespace MiniDoctrineBundle;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query\Filter\SQLFilter;

@@ -9,12 +9,12 @@
         <parameter key="doctrine.dbal.logger.profiling.class">Doctrine\DBAL\Logging\DebugStack</parameter>
         <parameter key="doctrine.dbal.logger.class">Symfony\Bridge\Doctrine\Logger\DbalLogger</parameter>
         <parameter key="doctrine.dbal.configuration.class">Doctrine\DBAL\Configuration</parameter>
-        <parameter key="doctrine.data_collector.class">MiniDoctrineDbalBundle\DataCollector\DoctrineDataCollector</parameter>
-        <parameter key="doctrine.dbal.connection.event_manager.class">MiniDoctrineDbalBundle\ContainerAwareEventManager</parameter>
-        <parameter key="doctrine.dbal.connection_factory.class">MiniDoctrineDbalBundle\ConnectionFactory</parameter>
+        <parameter key="doctrine.data_collector.class">MiniDoctrineBundle\DataCollector\DoctrineDataCollector</parameter>
+        <parameter key="doctrine.dbal.connection.event_manager.class">MiniDoctrineBundle\ContainerAwareEventManager</parameter>
+        <parameter key="doctrine.dbal.connection_factory.class">MiniDoctrineBundle\ConnectionFactory</parameter>
         <parameter key="doctrine.dbal.events.mysql_session_init.class">Doctrine\DBAL\Event\Listeners\MysqlSessionInit</parameter>
         <parameter key="doctrine.dbal.events.oracle_session_init.class">Doctrine\DBAL\Event\Listeners\OracleSessionInit</parameter>
-        <parameter key="doctrine.class">MiniDoctrineDbalBundle\Registry</parameter>
+        <parameter key="doctrine.class">MiniDoctrineBundle\Registry</parameter>
         <parameter key="doctrine.entity_managers" type="collection"></parameter>
         <parameter key="doctrine.default_entity_manager"></parameter>
     </parameters>

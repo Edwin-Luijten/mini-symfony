@@ -1,6 +1,6 @@
 <?php
 
-namespace DoctrineBundle;
+namespace MiniDoctrineBundle;
 
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;

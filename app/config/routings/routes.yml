@@ -1,5 +1,0 @@
-index:
-  path: /
-  defaults: { _controller: index_controller:getIndex}
-  methods:
-    - GET

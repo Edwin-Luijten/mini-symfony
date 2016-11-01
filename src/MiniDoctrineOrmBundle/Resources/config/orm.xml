@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
         <parameter key="doctrine.orm.configuration.class">Doctrine\ORM\Configuration</parameter>
         <parameter key="doctrine.orm.entity_manager.class">Doctrine\ORM\EntityManager</parameter>
-        <parameter key="doctrine.orm.manager_configurator.class">DoctrineBundle\ManagerConfigurator</parameter>
+        <parameter key="doctrine.orm.manager_configurator.class">MiniDoctrineORMBundle\ManagerConfigurator</parameter>
 
         <!-- cache -->
         <parameter key="doctrine.orm.cache.array.class">Doctrine\Common\Cache\ArrayCache</parameter>
@@ -37,7 +37,10 @@
         <parameter key="doctrine.orm.metadata.staticphp.class">Doctrine\ORM\Mapping\Driver\StaticPHPDriver</parameter>
 
         <!-- cache warmer -->
-        <parameter key="doctrine.orm.proxy_cache_warmer.class">DoctrineBundle\CacheWarmer\ProxyCacheWarmer</parameter>
+        <parameter key="doctrine.orm.proxy_cache_warmer.class">Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer</parameter>
+
+        <!-- security -->
+        <parameter key="doctrine.orm.security.user.provider.class">Symfony\Bridge\Doctrine\Security\User\EntityUserProvider</parameter>
 
         <!-- listeners -->
         <parameter key="doctrine.orm.listeners.resolve_target_entity.class">Doctrine\ORM\Tools\ResolveTargetEntityListener</parameter>

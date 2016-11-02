@@ -14,6 +14,10 @@ Check that the bundle you want to use does not require symfony/framework-bundle.
 https://github.com/Edwin-Luijten/mini-doctrine-bundle  
 `composer require mini-symfony/mini-doctrine-bundle`
 
+## Benchmarks
+
+- Clean installation [Blackfire graph](https://blackfire.io/profiles/220bf2f8-f50c-48ec-8574-c6db8911a9bd/graph)
+
 ### Todo  
 - [x] debug:container command
 - [x] Mini Dbal

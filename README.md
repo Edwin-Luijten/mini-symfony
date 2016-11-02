@@ -5,11 +5,13 @@ Mini Symfony is a skeleton based on [Symfony Emtpy Edition](https://github.com/g
 ## Installation  
 `composer create-project mini-symfony/skeleton my-project`
 
+After the installation is finished you can visit your project eg. `http://localhost/my-project/htdocs`.
+
 ## Additions  
 Check that the bundle you want to use does not require symfony/framework-bundle.
 
 ### Doctrine  
-https://github.com/Edwin-Luijten/mini-doctrine-bundle
+https://github.com/Edwin-Luijten/mini-doctrine-bundle  
 `composer require mini-symfony/mini-doctrine-bundle`
 
 ### Todo  

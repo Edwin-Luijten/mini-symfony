@@ -1,0 +1,4 @@
+welcome:
+  path: /
+  defaults:
+    _controller: frontend_index_controller:getWelcome

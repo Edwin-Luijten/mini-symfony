@@ -1,1 +1,3 @@
 services:
+  frontend_index_controller:
+    class: FrontendBundle\Controllers\IndexController

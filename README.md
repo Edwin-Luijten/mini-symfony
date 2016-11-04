@@ -7,6 +7,9 @@ Mini Symfony is a skeleton based on [Symfony Emtpy Edition](https://github.com/g
 
 After the installation is finished you can visit your project eg. `http://localhost/my-project/htdocs`.
 
+### Wiki
+[Check the Wiki](https://github.com/Edwin-Luijten/mini-symfony/wiki) for tips/how to's
+
 ## Additions  
 Check that the bundle you want to use does not require symfony/framework-bundle.
 

@@ -26,5 +26,6 @@ https://github.com/Edwin-Luijten/mini-doctrine-bundle
 - [x] Mini Dbal
 - [x] Mini ORM
 - [x] Move Mini Doctrine to separate package MiniDoctrineBundle
-- [ ] Environment detection 
+- [x] Environment detection 
+- [ ] Installer
 - [ ] Add benchmarks

@@ -11,8 +11,6 @@ final class CleanerHandler extends AbstractHandler implements HandlerInterface
         $this->write('');
         $this->writeHeader('Cleaning up <info>(also something you will forget)</info>.');
 
-        File::remove(File::INSTALLER);
-
         if($this->askConfirmation('Do you want to remove the \'paragonie/random_compat\' package?'))
         {
             exec(
@@ -25,6 +23,8 @@ final class CleanerHandler extends AbstractHandler implements HandlerInterface
                 )
             );
         }
+
+        File::remove(File::INSTALLER);
 
         $this->write('You are ready to rock!');
     }

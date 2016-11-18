@@ -22,7 +22,7 @@
     "symfony/console": "^3.0",
     "symfony/finder": "^3.0",
     "symfony/yaml": "^3.0",
-    "gnugat/micro-framework-bundle": "^0.5.1",
+    "gnugat/micro-framework-bundle": "^0.5.2",
     "paragonie/random_compat": "^2.0"
   },
   "scripts": {

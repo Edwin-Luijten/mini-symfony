@@ -1,0 +1,9 @@
+# This file is auto-generated during the composer install
+parameters:
+    secret: N23QrXTS2FksCNuq819l
+    debug.container.dump: '%kernel.cache_dir%/%kernel.container_class%.xml'
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     helix_api
+    database_user:     root
+    database_password: ~

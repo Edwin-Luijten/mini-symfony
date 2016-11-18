@@ -1,9 +1,9 @@
 <?php
 
-define('ENV_DEVELOPMENT', 'dev');
+define('ENV_DEVELOPMENT', 'development');
 define('ENV_TEST', 'test');
 define('ENV_UAT', 'uat');
-define('ENV_PRODUCTION', 'prod');
+define('ENV_PRODUCTION', 'production');
 
 if (!defined('ENVIRONMENT')) {
     if (($environment = getenv('ENVIRONMENT')) == false || getenv('ENVIRONMENT') == ENV_PRODUCTION) {

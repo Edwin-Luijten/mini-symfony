@@ -1,5 +1,0 @@
-services:
-  debug_command:
-    class: AppBundle\Command\ContainerDebugCommand
-    tags:
-        - { name: console.command }

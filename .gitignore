@@ -9,9 +9,6 @@
 /var/logs/*
 !var/logs/.gitkeep
 
-# Configuration
-/app/config/parameters.yml
-
 # Third Party libraries
 /vendor/
 /composer.phar

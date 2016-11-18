@@ -1,0 +1,5 @@
+# This file is auto-generated during the composer install
+parameters:
+    secret: 92c92a289600e4986182975907df7a440c0b2f737b2a19c8fbc5ef9253a3f0f434e152ae4c9490769922695820
+    encryption_key: ae22a07358f1c65fc81c27ff22be645256257fd1857ec2e050ca5a0886a91b1a83cb54fadb228cbbf187dbaf20
+    debug.container.dump: %kernel.cache_dir%/%kernel.container_class%.xml

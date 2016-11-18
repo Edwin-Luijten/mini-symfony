@@ -13,6 +13,19 @@ final class CleanerHandler extends AbstractHandler implements HandlerInterface
 
         File::remove(File::INSTALLER);
 
+        if($this->askConfirmation('Do you want to remove the \'paragonie/random_compat\' package?'))
+        {
+            exec(
+                escapeshellcmd(
+                    sprintf(
+                        'composer remove %s -d "%s" ',
+                        escapeshellarg('paragonie/random_compat'),
+                        escapeshellarg(__DIR__ . '/../../')
+                    )
+                )
+            );
+        }
+
         $this->write('You are ready to rock!');
     }
 }

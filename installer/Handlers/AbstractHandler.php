@@ -79,4 +79,30 @@ abstract class AbstractHandler
 
         File::replaceParameterInFile($name, $value, $file);
     }
+
+    /**
+     * @param $question
+     * @param bool $default
+     * @return bool
+     */
+    protected function askConfirmation($question, $default = true)
+    {
+        $defaultString = 'y';
+        if(!$default) {
+            $defaultString = 'n';
+        }
+        return $this->io->askConfirmation(sprintf('<question>%s</question> (<comment>%s</comment>): ', $question, $defaultString), $default);
+    }
+
+    /**
+     * @param $question
+     * @param $validator
+     * @param null $attempts
+     * @param null $default
+     * @return mixed
+     */
+    public function askAndValidate($question, $validator, $attempts = null, $default = null)
+    {
+        return $this->io->askAndValidate(sprintf('<question>%s</question> (<comment>%s</comment>): ', $question, $default), $validator, $attempts, $default);
+    }
 }

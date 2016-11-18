@@ -23,9 +23,7 @@ https://github.com/Edwin-Luijten/mini-doctrine-bundle
 
 ### Todo  
 - [x] debug:container command
-- [x] Mini Dbal
-- [x] Mini ORM
-- [x] Move Mini Doctrine to separate package MiniDoctrineBundle
+- [ ] create a separate package for the debug:command, Appbundle should be removable without losing functionality.
 - [x] Environment detection 
 - [x] Installer
 - [ ] Add benchmarks

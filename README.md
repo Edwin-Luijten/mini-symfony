@@ -27,5 +27,5 @@ https://github.com/Edwin-Luijten/mini-doctrine-bundle
 - [x] Mini ORM
 - [x] Move Mini Doctrine to separate package MiniDoctrineBundle
 - [x] Environment detection 
-- [ ] Installer
+- [x] Installer
 - [ ] Add benchmarks

@@ -23,7 +23,7 @@
     "symfony/finder": "^3.0",
     "symfony/yaml": "^3.0",
     "gnugat/micro-framework-bundle": "^0.5.2",
-    "mini-symfony/companion-bundle": "^0.0.1",
+    "mini-symfony/companion-bundle": "^0.1.0",
     "paragonie/random_compat": "^2.0"
   },
   "scripts": {

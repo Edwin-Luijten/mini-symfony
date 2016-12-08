@@ -23,7 +23,9 @@ https://github.com/Edwin-Luijten/mini-doctrine-bundle
 
 ### Todo  
 - [x] debug:container command
+- [x] debug:router command
+- [x] debug:event-dispatcher command
+- [x] debugbar
 - [x] create a separate package for the debug:command, Appbundle should be removable without losing functionality.
 - [x] Environment detection 
 - [x] Installer
-- [ ] Add benchmarks
